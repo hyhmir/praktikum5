@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+
+\title{\textbf{Osnove mikrovalovne tehnike}}
+\author{Samo Krejan}
+\date{november 2025}
+
+\begin{document}
+\maketitle
+
+\section{Uvod}
+
+Mikrovalovi so elektromagnetno valovanje z valovno dolžino nekaj cm in frekvenco nekaj GHz. Kot izvor mikrovalov služijo \textbf{klistroni}. To so elektronike, ki imajo za pospeševalno mrežico še dve mrežici, povezani s poloma resonančne votline (ki je tudi povezana na pospeševalno napetost in ob vklopu, zaradi naključnih oscilacij napetosti vzbudi začetno nihanje v votlini), ki ustvarjata med mrežicama izmenično napetost, ki enakomerni curek elektronov hitrostno modulira.  Hitrost elektronov med mrežicama se namreč bodisi poveča, če kaže električno polje med mrežicama v nasprotni smeri curka, bodisi zmanjša, če
+kaže polje v smeri curka. Zaradi hitrostne modulacije nastanejo po preletu mrežic v elektronskem curku zgoščine in razredčine. V refleksnem klistronu je za mrežicama resonančne votline odbojna elektroda, ki neenakomerni elektronski curek usmeri nazaj proti mrežicama in katodi. Če je odbojna napetost pravilno izbrana, se hitrostno modulirani curek vrne med mrežici s tako fazo, da električno polje gruč elektronov ojači lastno nihanje EM polja v resonančni votlini in klistron deluje kot oscilator. Pogoj za pozitivno povratno zvezo, s katero lastno nihanje v resonančni votlini je izpolnjeno za diskretne vrednosti napetosti, torej klistron deluje v različnih rodovih.
+
+Značilna in lahko merljiva količina za stojno valovanje v vodniku je razmerje med minimalno in maksimalno amplitudo napetosti ali toka, ki ga imenujemo \textbf{ubranost}:
+
+$$
+s = \frac{|U_{max}|}{|U_{min}|}.
+$$
+Reaktanco bremena normirano na karakteristično upornost lahko zapišemo kot:
+
+$$
+\frac{\eta_R}{Z_0} = \frac{(s^2-1)\tan (\beta x_{min})}{1 + s^2 \tan^2 (\beta x_{min})},
+$$
+
+Enako normirana rezistenca pa je:
+
+$$
+\frac{\xi_R}{Z_0} = \left(1-\frac{\eta_R}{Z_0}\tan (\beta x_min)\right)s
+$$
+
+
+Frekvenco mikrovalov merimo z resonatorjem, ki ga ugradimo v valovod. Umerimo ga s premikanjem dna. Ko je uglašen se tudi v njem pojavi valovanje, tako da se del moči valovanja na valovodu porabi. Če je vijak umerjen v frekvenčni skali lahko hitro določimo frekvenco valovanja v valovodu.
+
+Moč merimo najpogosteje s termoelektričnimi elementi, ki se zaradi obsevanja segrejejo in se jim zato spremeni upornost. Takim elementom pravimo \textbf{bolometri}. Če z bolometrom izmerimo moč $P_m$ dobimo celotno vpadno moč kot:
+
+$$
+P = \frac{P_m}{1-|r_R|}; \ \ \ |r_R|^2 = \frac{(s-1)^2}{(s+1)^2}
+$$
+
+Termistorji so izdelani iz polprevodnikov, ki so pomešani z bakrenim prahom za boljšo prevodnost. Zveza med močjo in spremembo upornosti ni popolnoma linearna za razliko od bareterjev, ki so iz tanke platinaste žičke. Slednji so občutljivi na preobremenitve, kar termistorji niso.
+
+\section{Potrebščine}
+
+\begin{itemize}
+    \item Klistron,
+    \item ubiralka,
+    \item dušilka,
+    \item resonator,
+    \item merilni vod,
+    \item kratkostična stena,
+    \item antena,
+    \item bolometer,
+    \item osciloskop in voltmeter.
+\end{itemize}
+
+\section{Naloga}
+
+\begin{itemize}
+    \item Prilagodite valovod na generator mikrovalov,
+    \item izmerite frekvenco valovanja s pomočjo resonatrja pri enem izmed najmočnejšh rodov,
+    \item poiščite rodove klistrona v odvisnosti od odbojne napetosti,
+    \item izmerite moči, ki jih porablja termistor v vrhovih najmočnejših rodov,
+    \item z osciloskopom pomerite krivulji ubranosti za valovod, ki je zaključen z bremenom in za kratko sklenjeni valovod.
+\end{itemize}
+
+
+
+
+
+
+\end{document}
