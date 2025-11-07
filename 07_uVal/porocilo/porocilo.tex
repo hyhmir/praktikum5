@@ -13,6 +13,7 @@
 \usepackage{physics}
 \usepackage{geometry}
 \geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\usepackage{parskip} 
 
 \title{\textbf{Osnove mikrovalovne tehnike}}
 \author{Samo Krejan}
@@ -29,7 +30,7 @@ kaže polje v smeri curka. Zaradi hitrostne modulacije nastanejo po preletu mre�
 Značilna in lahko merljiva količina za stojno valovanje v vodniku je razmerje med minimalno in maksimalno amplitudo napetosti ali toka, ki ga imenujemo \textbf{ubranost}:
 
 $$
-s = \frac{|U_{max}|}{|U_{min}|}.
+s = \frac{|U_{min}|}{|U_{max}|}.
 $$
 Reaktanco bremena normirano na karakteristično upornost lahko zapišemo kot:
 
@@ -78,6 +79,50 @@ Termistorji so izdelani iz polprevodnikov, ki so pomešani z bakrenim prahom za 
     \item z osciloskopom pomerite krivulji ubranosti za valovod, ki je zaključen z bremenom in za kratko sklenjeni valovod.
 \end{itemize}
 
+
+\section{Meritve in rezultati}
+
+Najprej sem izmeril frekvenco pri enem izmed rodov. Izbral sem si tistega pri $144,5 V$ Pred meritvijo frekvence je bilo potrebno nastaviti še ubiralko, kar se je izkazalo za precej zahtevno nalogo, saj je bil odziv izjemno občutljiv na majhne premike. 
+
+Ko smsemo to uredili, sem na resonatorju izmerili pozicijo $413,0 \pm 0,5$. To številko s pomočjo referenčnih vrednosti v navodilih prevedemo v frekvenco in tako dobimo prvi rezultat:
+
+$$
+\nu = (8,435\pm 0.003)\ GHz
+$$
+
+Za tem sem sicer meril moči z bolometrom pri različnih rodovih, a za namene analize moramo se moramo najprej posvetiti krivulji ubranosti, saj moramo dejansko moč nekoliko popraviti glede na tisto izmerjeno.
+
+Ubranost merimo tako, da analiziramo stoječe valovanje pri različnih zaključkih. To storimo tako, da merimo napetost na sondi v odvisnosti od pozicije. Na ta način dobimo sledeči graf (slika \ref{fig: ubranost})
+
+\begin{figure}[ht]
+\begin{center}
+    \includegraphics[width=9cm]{ubranost.pdf}
+    \caption{Krivulja ubranosti za različne zaključke valovoda}
+    \label{fig: ubranost}
+\end{center}
+\end{figure}
+
+Graf sicer prikazuje krivuljo ubranosti s filtrom, ki naredi tekoče povprečje z oknom velikosti 10. To povprečje vzamemo kot dejansko vrednost, iz razpršenosti podatkov pa ocenimo napako. Ubranost nato izračunamo po enačbi:
+
+$$
+s = \frac{|U_{min}|}{|U_{max}|} = \sqrt{\frac{h_{min}}{h_{max}}}
+$$
+
+kjer sta $h_{min}$ in $h_{max}$ najmanjši in največji izmerek napetosti po absolutni vrednosti. Relacija velja zaradi kvadratne karakteristike diode s katero merimo napetost. Tako dobimo naslednje vrednosti ubranosti predstavljene v tabeli \ref{tab: ubranost}
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c | c|}\hline
+    zaključek & ubranost \\ \hline \hline
+    bolometer & $0.17\pm 0.08$ \\ \hline
+    antena & $0.77\pm 0.02$ \\ \hline
+    stena & $0.07\pm 0.15$ \\\hline
+\end{tabular}
+\caption{vrednosti ubranosti za različne zaključke}
+\label{tab: ubranost}
+\end{table}
+
+Poleg ubranosti lahko iz istega grafa razberemo tudi $\lambda '$. Ta je namreč enaka dvakratniku razdalje med minimuma krivulje, ki opisuje kratkostično steno
 
 
 
