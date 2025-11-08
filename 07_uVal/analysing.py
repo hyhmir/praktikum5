@@ -119,8 +119,11 @@ njRa = (s_a**2-1)*umath.tan(bxma)/(1+s_a**2*umath.tan(bxma)**2) # type: ignore
 xjRb = (1 - njRb*umath.tan(bxmb))*s_b # type: ignore
 xjRa = (1 - njRa*umath.tan(bxma))*s_a # type: ignore
 
-print(f'reaktanca in rezistenca sta: {njRb} in {xjRb} za bolometer')
-print(f'reaktanca in rezistenca sta: {njRa} in {xjRa} za anteno')
+ib = umath.sqrt(njRb**2 + xjRb**2) # type: ignore
+ia = umath.sqrt(njRa**2 + xjRa**2) # type: ignore
+
+print(f'reaktanca in rezistenca sta: {njRb} in {xjRb} za bolometer {ib}')
+print(f'reaktanca in rezistenca sta: {njRa} in {xjRa} za anteno {ia}')
 
 
 ##### moc rodov #####
@@ -145,3 +148,16 @@ plt.xlabel('U [V]')
 plt.savefig('07_uVal/porocilo/moc.pdf', dpi=512)
 plt.clf()
 # plt.show()
+
+##### prikaz razmazanosti ######
+
+dfi = pd.read_csv('07_uVal/data/NewFile6.csv', skiprows=[1], usecols=["CH1", "CH2"])
+plt.plot(premik(dfi['CH1'], False), dfi['CH2']/10, '.')
+dfi = pd.read_csv('07_uVal/data/NewFile4.csv', skiprows=[1], usecols=["CH1", "CH2"])
+plt.plot(premik(dfi['CH1'], False), dfi['CH2'], '.')
+dfi = pd.read_csv('07_uVal/data/NewFile2.csv', skiprows=[1], usecols=["CH1", "CH2"])
+plt.plot(premik(dfi['CH1'], False), dfi['CH2'], '.')
+plt.grid()
+plt.title('Ponazoritev razmazanosti')
+plt.savefig('07_uVal/porocilo/razmazanost.pdf', dpi=512)
+plt.clf()

@@ -133,9 +133,54 @@ Z valovno dolžino mikrovalov v valovodu lahko izračunam frekvenco valovanja, k
 $$
 \nu = \frac{c \sqrt{\lambda^2 + 4a^2}}{2a\lambda} = (8,35\pm 0,17)\ GHz
 $$
-Kar se sklada s frekvenco izmerjeno z resonatorjem v okviru napake.
+Kar se sklada s frekvenco izmerjeno z resonatorjem v okviru napake. V formuli je $c$ hitrost svetlobe v vakumu, $a = (2,6\pm 0,1) cm$ pa je večja širina preseka valovoda. 
 
-Poleg ubranosti je pomemben parameter, ki je bistven pri določanju impedance valovoda, razlika med lego minimuma bremena in kratkostične stene $x'_{min}$, tega za anteno in bolometer določimo iz krivulje ubranosti in dobimo $(2,1\pm 0,1)\ cm$ za anteno in $(1,18\pm 0,08)\ cm$ za bolometer. Napake sem, tako kot pri določanju valovne dolžine, ocenil iz širine minimuma.
+Poleg ubranosti je pomemben parameter, ki je bistven pri določanju impedance valovoda, razlika med lego minimuma bremena in kratkostične stene $x'_{min}$, tega za anteno in bolometer določimo iz krivulje ubranosti in dobimo $(2,1\pm 0,1)\ cm$ za anteno in $(1,18\pm 0,08)\ cm$ za bolometer. Napake sem, tako kot pri določanju valovne dolžine, ocenil iz širine minimuma. Nato sem iz s pomočjo enačb v uvodu izračunal reaktanco in rezistenco normirani na karakteristično upornost, kjer sem uporabil še sledeče dejstvo:
+
+$$
+\beta x_{min} = 2\pi \frac{x'_{min}}{\lambda'}
+$$
+S tem sem dobil vrednosti predstavljene v tabeli \ref{tab: impedanca}. Impedanca je seveda pitagorejska vsota reaktance in rezistence:
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{c|ccc}
+    & reaktanca & rezistenca & impedanca \\ \hline
+    antena & $0,19\pm 0,05$ & $0,86\pm 0,05$ & $0,88\pm 0,06$\\
+    bolometer & $-2,3\pm 2,7$ & $4,9\pm 2,8$ & $5,4\pm 2,6$
+\end{tabular}
+\caption{Reaktanca, rezistenca in impedanca normirani na karakteristično upornost}
+\label{tab: impedanca}
+\end{table}
+
+Kar še preostane, je poiskati rodove klistrona in izmeriti njihovo moč. Ko sem izmeril moč, s tem pravzaprav nisem meril dejanske moči, a le to lahko dobim preko zveze:
+
+$$
+P = \frac{P_m}{1-|r_R|}; \ \ \ |r_R|^2 = \frac{(s-1)^2}{(s+1)^2}
+$$
+kjer je $P_m$ z bolometrom izmerjena moč. Upoštevajoč to, sem dobil naslednji graf moči v odvisnosti od napetosti v posameznih rodovih \ref{fig: moč}:
+\newpage
+\begin{figure}[ht]
+\begin{center}
+    \includegraphics[width=10cm]{moc.pdf}
+    \caption{Moči v posameznih rodovih}
+    \label{fig: moč}
+\end{center}
+\end{figure}
+
+\section{Zaključek}
+
+Vidimo, da so napake zares velike, a to je za pričakovati ko si ogledamo, kakšne napake smo dobili pri računu ubranosti. Tam sem bil verjetno nekoliko konzervativen pri oceni napake, saj je res nisem želel podceniti, A glede na razmazanost podatkov, se mi zdi, da je bil moj pristop pravilen. Razmazanost meritev je ponazorjena na sliki \ref{fig: razmazanost}
+
+\begin{figure}[ht]
+\begin{center}
+    \includegraphics[width=9cm]{razmazanost.pdf}
+    \caption{Krivulja ubranosti z neobdelanimi podatki}
+    \label{fig: razmazanost}
+\end{center}
+\end{figure}
+
+Kljub temu, sam dobil precej dobre rezultate, vsaj kolikor sem jih primerjal z ostalimi, ki so to vajo že opravili (tudi v prejšnjih letih) se moji rezultati večinoma precej vredu ujemajo.
 
 
 \end{document}
