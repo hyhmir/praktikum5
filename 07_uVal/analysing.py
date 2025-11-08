@@ -13,8 +13,8 @@ plt.style.use('science')
 res_poz = ufloat(413.0, 0.5)
 freq = -2/400 * res_poz + 10.5 # type: ignore
 
-print(f"frekvenca: {freq} GHz")
-print('\n \n --------------------------------')
+print(f"------------------------------\nfrekvenca: {freq} GHz")
+print('--------------------------------')
 
 
 ##### kalibracija #####
@@ -47,8 +47,8 @@ df = dfi.rolling(10,1,True).mean()
 maxi = ufloat(np.max(df['CH2']), np.abs(np.max(df['CH2']) - np.max(dfi['CH2'])))
 mini = ufloat(np.min(df['CH2']), np.abs(np.min(df['CH2']) - np.min(dfi['CH2'])))
 
-s = umath.sqrt(maxi/mini) # type: ignore
-print(f'Ubranost = {s}')
+s_b = umath.sqrt(maxi/mini) # type: ignore
+print(f'Ubranost = {s_b}')
 
 plt.plot(premik(df['CH1'], False), df['CH2'], '.',  ms=3, label='Bolometer')
 # plt.show()
@@ -64,8 +64,8 @@ df = dfi.rolling(10,1,True).mean()
 maxi = ufloat(np.max(df['CH2']), np.abs(np.max(df['CH2']) - np.max(dfi['CH2'])))
 mini = ufloat(np.min(df['CH2']), np.abs(np.min(df['CH2']) - np.min(dfi['CH2'])))
 
-s = umath.sqrt(maxi/mini) # type: ignore
-print(f'Ubranost = {s}')
+s_a = umath.sqrt(maxi/mini) # type: ignore
+print(f'Ubranost = {s_a}')
 
 plt.plot(premik(df['CH1'], False), df['CH2'], '.',  ms=3, label='Antena')
 # plt.show()
@@ -91,14 +91,57 @@ plt.title('Krivulja ubranosti')
 plt.xlabel('x [cm]')
 plt.ylabel('U [V]')
 plt.savefig('07_uVal/porocilo/ubranost.pdf', dpi=512)
-plt.show()
+# plt.show()
 plt.clf()
+
+
+##### racunanje stvari #####
+
+
+lamb_ = ufloat(4.962, 0.08)
+a = ufloat(2.6, 0.1)
+c = 29979245800
+fr = c*(umath.sqrt(lamb_**2 + 4*a**2))/(2*a*lamb_) # type: ignore
+
+print(f' ------------------------------\nfrekvenca izracunana iz valovne dolzine: {fr}\n ------------------------------\n')
+
+rR = (s_b-1)**2/(s_b+1)**2
+
+x_b = ufloat(1.178, 0.08)
+x_a = ufloat(2.073, 0.12)
+
+bxmb = 2*np.pi*x_b/lamb_ # type: ignore
+bxma = 2*np.pi*x_a/lamb_ # type: ignore
+
+njRb = (s_b**2-1)*umath.tan(bxmb)/(1+s_b**2*umath.tan(bxmb)**2) # type: ignore
+njRa = (s_a**2-1)*umath.tan(bxma)/(1+s_a**2*umath.tan(bxma)**2) # type: ignore
+
+xjRb = (1 - njRb*umath.tan(bxmb))*s_b # type: ignore
+xjRa = (1 - njRa*umath.tan(bxma))*s_a # type: ignore
+
+print(f'reaktanca in rezistenca sta: {njRb} in {xjRb} za bolometer')
+print(f'reaktanca in rezistenca sta: {njRa} in {xjRa} za anteno')
 
 
 ##### moc rodov #####
 
 df = pd.read_csv('07_uVal/data/NewFile9.csv')
 
-plt.errorbar(df['U'], df['P'], xerr=df['U_err'], yerr=df['P_err'], fmt='.',  ms=3, label='meritve')
+df['P actual'] = df['P']
+df['P actual err'] = df['P']
+
+for i in range(len(df['P'])):
+    pm = ufloat(df['P'][i], df['P_err'][i])
+    p = pm / (1 - umath.sqrt(rR)) # type: ignore
+    df.loc[i, 'P actual'] = p.n
+    df.loc[i, 'P actual err'] = p.s
+
+# plt.errorbar(df['U'], df['P'], xerr=df['U_err'], yerr=df['P_err'], fmt='.',  ms=3, label='meritve')
+plt.errorbar(-df['U'], df['P actual'], xerr=df['U_err'], yerr=df['P actual err'], fmt='.',  ms=3, label='meritve')
+plt.grid()
+plt.title('Rodovi klistrona')
+plt.ylabel('P [mW]')
+plt.xlabel('U [V]')
+plt.savefig('07_uVal/porocilo/moc.pdf', dpi=512)
 plt.clf()
 # plt.show()

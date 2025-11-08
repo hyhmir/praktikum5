@@ -41,7 +41,7 @@ $$
 Enako normirana rezistenca pa je:
 
 $$
-\frac{\xi_R}{Z_0} = \left(1-\frac{\eta_R}{Z_0}\tan (\beta x_min)\right)s
+\frac{\xi_R}{Z_0} = \left(1-\frac{\eta_R}{Z_0}\tan (\beta x_{min})\right)s
 $$
 
 
@@ -122,10 +122,20 @@ kjer sta $h_{min}$ in $h_{max}$ najmanjši in največji izmerek napetosti po abs
 \label{tab: ubranost}
 \end{table}
 
-Poleg ubranosti lahko iz istega grafa razberemo tudi $\lambda '$. Ta je namreč enaka dvakratniku razdalje med minimuma krivulje, ki opisuje kratkostično steno
+Poleg ubranosti lahko iz istega grafa razberemo tudi $\lambda '$. Ta je namreč enaka dvakratniku razdalje med minimuma krivulje, ki opisuje kratkostično steno. Na ta način dobimo:
 
+$$
+\lambda ' = (4,96\pm 0,08)\ cm
+$$
 
+Z valovno dolžino mikrovalov v valovodu lahko izračunam frekvenco valovanja, ki je povezana z valovno dolžino preko svetlobne hitrosti. Čeprav bi si seveda želel uporabiti relacijo $c = \lambda \nu$ je v valovodu situacija nekoliko drugačna in velja relacija:
 
+$$
+\nu = \frac{c \sqrt{\lambda^2 + 4a^2}}{2a\lambda} = (8,35\pm 0,17)\ GHz
+$$
+Kar se sklada s frekvenco izmerjeno z resonatorjem v okviru napake.
+
+Poleg ubranosti je pomemben parameter, ki je bistven pri določanju impedance valovoda, razlika med lego minimuma bremena in kratkostične stene $x'_{min}$, tega za anteno in bolometer določimo iz krivulje ubranosti in dobimo $(2,1\pm 0,1)\ cm$ za anteno in $(1,18\pm 0,08)\ cm$ za bolometer. Napake sem, tako kot pri določanju valovne dolžine, ocenil iz širine minimuma.
 
 
 \end{document}
