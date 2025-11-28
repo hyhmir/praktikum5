@@ -1,0 +1,167 @@
+\documentclass[12pt]{article}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\usepackage{parskip}
+\usepackage{float} 
+
+\title{\textbf{Elektrooptični pojav}}
+\author{Samo Krejan}
+\date{november 2025}
+
+\begin{document}
+\maketitle
+
+\section{Uvod}
+
+Tekoče kristale tvorijo podolgovate molekule, ki se pri ne previsokih temperaturah orientacijsko uredijo. Za smektične tekoče kristale je značilno, da se molekule uredijo v plasti.
+
+Smektični kristal je oblika mezofaze (faza med trdnim in tekočim stanjem), ki so usmerijo podolgem v plasti, vendar se molekula lahko znotraj plasti prosto giba. Primer smektičnega tekočega kristala je milo.
+
+Poznamo več vrsti smektičnih kristalov, ki jih prikazuje spodnja slika
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=.9\linewidth]{smecticCrystals.jpg}
+\end{center}
+\caption{\small Slika prikazuje, kako različne vrste smektičnih kristalov.}
+\end{figure}
+
+V smektikih A kaže odlikovana smer, ki ji pravimo direktor vzdolž normale plasti, v smektikih C* pa je kot, ki ga oklepa direktor z normalo nekje med \(10^{\circ} \text{ in } 30^{\circ}\).
+
+Feroelektrične smektične C* tvorijo molekule, ki imajo velik električni dipolni moment prečno na vzdolžno os molekul, zato se v teh snoveh pojavi električna polarizacija, ki leži v ravnini plasti in je pravokotna na direktor. Polarizacija je sorazmerna s kotom nagiba. Tekoči kristali so posebej uporabni zaradi dvolomnosti, ki izhaja iz orientacijske urejenosti molekul, kjer je optična os vzporedna z direktorjem.
+
+V dovolj debelem vzorcu oriše smer nagiba in s tem tudi električna polarizacija poln krog (nekaj sto do tisoč plasti). Polarizacijo plasti lahko uredimo v isto smer bodisi z zunanjim električnim poljem bodisi z ograditvijo vzorca v ploščici, ki predpisujeta orientacijo molekul. Predpisovanje orientacij molekul je doseženo s kemično ali mehansko obdelavo površin.
+
+Če je razmik med ploščicama dovolj majhen (reda v \(\mu m\)), se direktor postavi v predpisani smeri po vsem vzorcu. V takem površinko stabiliziranem feroelektričnem tekočem kristalu so plasti kristala pravokotne na ploščici, električna polarizacija pa leži v ravnini ploščic.
+
+Če postavimo ta tanko površinko stabiliziran feroelektrični kristal v zunanje električno polje \(\vec{E}\), ki je pravokoten na ploščici, se električna polarizacija vzorca deloma zasuče v smeri polje. Tudi direktor se deloma zasuče na stožcu smeri, ki ga določa nagib direktorja glede na normalo plasti. Zasuk električne polarizacije je sorazmeren z električnim poljem, posledično je sorazmeren tudi zasuk optične osi.
+
+Linearnemu odzivu lomnega količnika na zunanje električno polje pravimo \emph{elektrooptični pojav}. Zasuk polarizacije je v izmeničnem polju odvisen tudi od frekvence. Pri previsoki frekvenci polarizacija ne more več slediti polju. Odvisnost spremembe polarizacije \(\partial P\) od frekvence opišemo z Debyjevim relaksacijskim modelom
+
+\begin{equation}
+\label{eq:1}
+\partial P = \partial P_0 \frac{1}{1 + i \omega \tau}
+\end{equation}
+
+kjer je \(\tau\) relaksacijski čas odvisen od viskoznosti tekočega kristala in od debeline vzorca.
+
+Kot zasuka optične osi, ki je sorazmeren s spremembo polarizacije, ima enako frekvenčno odvisnost.
+
+Spremembo smeri optične osi zaznamo tako, da opazujemo, kako se spremeni polarizacija svetlobe pri prehodu skozi vzorec. Na vzorec posvetimo s polarizirano svetlobo in merimo svetlobno moč, ki jo prepušča analizator za vzorcem.
+
+Vpadno polarizacijo razstavimo na izredno komponento, ki je vzporedna z optično osjo in na redno komponento, pravokotno na optično os. Prepuščeno svetlobno moč merimo s pomočjo fotodiode. Odziv nekega sistema na majhne periodične zunanje motnje najlažje izmerimos faznim občutljivim ojačevalnikom (FOO, angl. \emph{lock-in amplifier}).
+
+FOO deluje po principu tega, da vhodni izmenični signal iz fotodiode pomnoži z referenčnim izmeničnim signalom s frekvenco modulacije (v našem primeru zunanje električnega polja, priklopljenega na tekočekristalni vzorec).
+
+V tekočem kristalu je zasuk optične osi \(\psi\) zaradi viskoznosti snovi zakasnjen glede na zunanje električno polje. Del, ki je v fazi dobimo kot realni del enačbe \ref{eq:1}, del zasukan za \(\frac{\pi}{2}\) pa kot imaginarni del
+
+\begin{align}\label{al:1}
+  \psi_r &= \frac{\psi_0}{1 + (\omega \tau ) ^2} \\
+\psi_i &= - \frac{\psi_0 \omega \tau}{1 + (\omega \tau)^2}
+\end{align}
+
+\section{Potrebščine}
+
+\begin{itemize}
+    \item Laser,
+    \item fazno občutljivi ojačevalec z multimetrom,
+    \item foto dioda,
+    \item analizator,
+    \item vzorec,
+    \item osciloskop.
+\end{itemize}
+
+\begin{figure}[ht]
+\begin{center}
+    \includegraphics[width=11cm]{postavitev.png}
+    \caption{Shematski prikaz postavitve eksperimenta}
+    % \label{}
+\end{center}
+\end{figure}
+
+
+\section{Naloga}
+
+\begin{itemize}
+    \item Prepričaj se, da je elektrooptični odziv sorazmeren z modulacijo do neke napetosti,
+    \item Nariši obe komponenti signala kot funkciji frekvence in določi relaksacijski čas,
+    \item Nariši razmerje med signaloma in določi relaksacijski čas.
+\end{itemize}
+
+\section{Meritve in rezultati}
+
+Vse meritve sem zabeležil v .csv datotekah in jih kasneje obdelav v Pythonu.
+
+\subsection{Sorazmernost odziva z modulacijo}
+
+Pri fiksni frekvenci $\nu = 20 Hz$ sem preveril, če sta obe komponenti signala odziva res sorazmerna. S prilagajanjem premic sem preveril, da to drži. Enačbi prilaganih premic sta 
+
+$y1 = (9.66 \pm 0.03) x - 0.16 \pm 0.05$ in 
+
+$y2 = (-20.8 \pm 0.5) x + 2.2 \pm 0.7$
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=10cm]{straight.pdf}
+    \caption{Sorazmernost odziva z modulacijo}
+    \label{}
+\end{center}
+\end{figure}
+
+
+\subsection{Določanje relaksacijskega časa}
+
+
+Kasneje sem pri fiksni napetosti $U = 0.242\ V$ spreminjal frekvenco in opazoval odziv. Na dobljen graf sem nato prilagajal funkciji \ref{al:1} in dobil slednji vrednosti za $\tau$:
+
+$\tau_1 = (2.6\pm 0.1) \ ms$ in
+
+
+$\tau_2 = (2.7\pm 0.5) \ ms$
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=10cm]{vijuga.pdf}
+    \caption{Določanje relaksacijskega časa s prilagajanjem funkcije}
+    % \label{}
+\end{center}
+\end{figure}
+
+
+kjer sem napake dobil s pomočjo Pythonovih orodji za prilagajanje funkcij.
+
+Lahko pa $\tau$ izmerim tudi tako, da zgrafiram $\psi_i/\psi_r$, saj naj bi bil graf le tega premica z naklonom $-\omega\tau$
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=10cm]{errs.pdf}
+    \caption{Razmerje komponent signala}
+    % \label{}
+\end{center}
+\end{figure}
+
+Na ta zadnji način sem dobil 
+
+$\tau = (2.9 \pm 0.2) ms$
+
+Kar se pravzapra ravno še sklada z prej določenimi vrednostmi, tako, da lahko označim rezultat kot uspešen.
+
+\section{Zaključek}
+
+Uspešno sem določil relaksacijski čas kar je bil cilj naloge. Sama naloga se mi je zdela dokaj lahka za izvesti, a je vzela veliko razumevanja pri obdelavi podatkov. Na kakšnih točkah sem bil verjetno malo premalo konzervativen z napakami, saj se dobljeni rezultati skoraj da ne ujemajo. Kljub vsemu označim nalogo za uspešno opravljeno.
+
+
+
+\end{document}
