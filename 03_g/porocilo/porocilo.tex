@@ -1,0 +1,43 @@
+\documentclass[12pt]{article}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+% \usepackage[T2A]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+% \usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\usepackage{parskip} 
+\usepackage{float}
+
+\title{\textbf{Spektrometrija žarkov $\gamma$ s scintilatorskim spektrometrom}}
+\author{Samo Krejan}
+\date{januar 2026}
+
+\begin{document}
+\maketitle
+
+\section{Uvod}
+
+Energije žarkov ne moremo meriti neposredno, ampak le tako da izmerimo energijo elektronov, ki jo ti prejmejo od žarkov $\gamma$ pri fotoefektu ali Comptonovem sipanju ali pa energijo tvorbo parov pozitron-elektron iz procesa tvorbe parov. Pri scintilacijskem detektorju uporabljamo v ta namen monokristale $N aJ$ z dodatkom okoli 1\% talija kot nečistoče. Pri potovanju hitrih nabitih delcev skozi kristal ostane za njimi razdejanje v obliki sledi elektron-vrzel. Ponovno združevanje med elektroni in vrzelmi poteka energijsko ugodneje v bližini atoma nečistole. Tu vrzeli vzamejo elektron atomom nečistoče in jo ionizirajo. Odvečno energijo oddajo bodisi sosednjim atomom v kristalni mreži in tako povečajo termično gibanje ali pa z izsevanje fotonov vidne svetlobe. Število scintilacijskih fotonov določimo s pomočjo fotopomnoževalke. Višina signala iz fotopomnoževalke je sorazmerna številu fotonov in torej tudi energiji, ki jo hitri nabiti delec izgubi v scintilatorju.
+
+\subsection{Fotoefekt}
+
+Pri fotoefektu žarek $\gamma$ izbije elektron iz enega od vezanih stanj. Najverjetneje je to elektron iz lupine K. Atom, ki je po emisiji elektrona K v vzbujenem stanju, se vrne v osnovno stanje tako, da zapolni vrzel z elektronom iz višjih stanj in pri tem izseva karakterističen žarek X. Tudi ta v scintilatorju lahko doživi fotoefekt in dobimo dva elektrona katerih energija je približno enaka prvotnemu fotou $\gamma$. Nekateri karakteristični žarki pa uidejo iz scintilatorja in s tem dobimo vrh pobega fotona pri $E = E_\gamma - E_K$ , kjer je $E_K$ vezavna energija elektrona.
+
+\subsection{Comptonovo sipanje}
+
+Comptonovo sipanje je neelastično sipanje fotona na skoraj prostem elektronu. Pri sipanju se seveda ohranjata energija in gibalna količina. Spekter comptonsko sipanih elektronov je zvezen.
+
+\subsection{Tvorba parov}
+
+Kadar ima žarek $\gamma$ dovolj energije ($E_\gamma \geq 1.02\ MeV$), se lahko v bližini jedra spremeni v par pozitron-elektron s skupno kinetično energijo $E_\gamma - 2m_0c^2$, odvečno gibalno količino pa prevzame jedro. Nastala delca se gibljeta pretežno v smeri naprej. V scintilatorju se zaustavita in mu predata svojo kinetično energijo. Ob upočasnitvi se poziton anihilira z enim od elektronov, ki jih sreča na svoji poti. Nastaneta dva kolinearna žarka $\gamma$. Možno je da pobegneta oba, samo en ali pa da oba ostaneta v scintilatorju. Tako dobimo vrh dvojnega pobega, vrh pobega in vrh polne absorbcije
+
+
+\end{document}
