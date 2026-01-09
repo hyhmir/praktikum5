@@ -1,11 +1,7 @@
 import matplotlib as mpl
 from matplotlib import figure, animation
-mpl.rcParams.update({
-    'font.family': 'serif',
-    'text.usetex': True,
-    'axes.labelsize': 'large',
-    'figure.dpi': 100,
-})
+import scienceplots
+mpl.pyplot.style.use('science')
 from matplotlib.ticker import AutoMinorLocator
 
 import numpy as np
@@ -17,7 +13,7 @@ import re
 from measio import read_measdict
 
 
-measdict = read_measdict('measurements/*.csv')
+measdict = read_measdict('zz_martin-hvala/hall/measurements/*.csv')
 
 B = 0.173
 c = 0.95e-3
@@ -204,6 +200,6 @@ def fig_lnn_by_1_by_kT(savefig=None):
     fig.savefig(savefig, dpi=300)
 
 
-fig_U_by_T(savefig='U-by-T.pdf')
-fig_both_U(savefig='both.pdf')
-fig_lnn_by_1_by_kT(savefig='lnn-by-1-by-kT.pdf')
+fig_U_by_T(savefig='02_Hall/porocilo/U-by-T.pdf')
+fig_both_U(savefig='02_Hall/porocilo/both.pdf')
+fig_lnn_by_1_by_kT(savefig='02_Hall/porocilo/lnn-by-1-by-kT.pdf')

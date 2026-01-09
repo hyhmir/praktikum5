@@ -1,0 +1,193 @@
+\documentclass[12pt]{article}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+% \usepackage[T2A]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+% \usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\usepackage{parskip} 
+\usepackage{float}
+
+\title{\textbf{Hallov pojav}}
+\author{Samo Krejan}
+\date{januar 2026}
+
+\begin{document}
+\maketitle
+
+\section{Uvod}
+
+Leta 1879 si je E. H. Hall zamislil eksperiment, kjer je kovinski trak v vlogi tokovnega vodnika postavil v prečno magnetno polje, pravokotno na trak. Pričakoval je, da bo magnetna sila pritegnila tok elektronov od enega iz med robov kovinskega traku kar bi efektvno zmanjšalo presek traka in bi se v praksi pokazalo kot povečanje upora skozi trak. Te spremembe upornosti ni zaznal. Tako je sklepal, da se med robovoma traku pojavi, zdaj po njemu poimenovana, Hallova napetost, kjer nastalo električno
+polje preko električne sile uravnovesi magnetno silo na gibajoče se elektrone.
+
+$$
+U_H = E_y b = -\frac{jbB}{ne_0} = -\frac{IB}{ne_0c}
+$$
+
+kjer so $a, b, c$ dimenzije traku po katerem teče električni tok I v magnetnem
+polju $B$ postavljenim v smeri $z$ osi. Kvocient $E_y/jB$ imenujemo Hallova konstanta
+$R_H$ in jo lahko izrazimo kot:
+
+$$
+R_H = - \frac{1}{ne_o} = -\frac{U_Hc}{IB}
+$$
+
+Iz (1 sledi, da je Hallov pojav koristen za merjenje gostote magnetnega polja. Skozi Hallovo sondo, ki je bila umerjena v znanem magnetnem polju pošljemo isti električni tok in lahko tako izmerimo B. Iz enačbe (2) pa sledi, da lahko z merjenjem Hallove konstante določimo predznak in gostoto nosilcev naboja, kar bomo tudi storili pri tej nalogi za primer germanijevega polprevodnika, kjer nečistoče/dopiranje odločilno vplivajo na gostoto nosilcev naboja.
+
+Gostota nosilcev naboja in s tem prevodnost, se v polprevodniku drastično poveča v prisotnosti primesi, ki se vgradijo v polprevodniški kristal. Običajo so kristali polprevodnikov iz štirivalentnih atomov. če dodamo petvalentno primer dobimo polprevodnik tipa n, kjer odvečni elektroni tvorijo donorski nivo tik pod prevodnim pasom in rabijo zelo malo energije, da preskočijo režo. Podobno lahko storimo tudi z trivalentno primesjo kjer dobimo polprevodnik tipa p.
+
+Ker h gostoti elektronov v prevodnem pasu v primeru polprevodnika tipa n prispevajo tudi elektroni, ki so bili termično dvignjeni iz donorskega nivoja sledi iz enačbe (1), da lahko z merjenjem Hallove napetosti pravzaprav izmerimo tudi temperaturno odvisnost gostote nosilcev naboja
+
+V čistem polprevodniku je gostota prevodnih elektronov enaka
+
+\begin{equation}
+    n_p(T) = \frac{1}{4} \left( \frac{2m_e kT}{\pi h^2} \right)^{3/2} \exp \left\{ -\frac{E_g}{2kT} \right\},
+    \label{eq:5}
+\end{equation}
+
+pri čemer je $E_g$ energijska reža med valenčnim in prevodnim pasom. V n-dopiranem polprevodniku zveza v nizko-temperaturni limiti postane
+
+\begin{equation}
+    n_p(T) = N_d \frac{1}{4} \left( \frac{2m_e kT}{\pi h^2} \right)^{3/2} \exp \left\{ -\frac{E_d}{2kT} \right\},
+    \label{eq:6}
+\end{equation}
+
+pri čemer je $N_d$ gostota donorskih primesi, $E_d$ pa reža od prevodnega pasa navzdol proti nivoju donorskih elektronov~(glej sliko~\ref{fig:band-structure}). Če je termična energija dovolj velika ($kT > E_d$), prevladajo v prevodnem pasu donorski elektroni, ki so kar v celoti \textbf{sublimirani} v prevodni pas. Tedaj velja, da je gostota prevodnih elektronov preprosto
+
+\begin{equation}
+    n_p(T) = N_d.
+    \label{eq:7}
+\end{equation}
+
+% \begin{figure}
+%     \begin{center}
+%         \includegraphics[width=0.35\textwidth]{band-structure.png}
+%     \end{center}
+%     \caption{Valenčni in prevodni pas v n-dopiranem polprevodniku.}
+%     \label{fig:band-structure}
+% \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{band-structure.png}
+    \caption{Valenčni in prevodni pas v n-dopiranem polprevodniku.}
+    \label{fig:band-structure}
+\end{figure}
+
+% \begin{figure}
+%     \begin{center}
+%         \includegraphics[width=0.6\textwidth]{limits.png}
+%     \end{center}
+%     \caption{Diagram, kjer jasno vidimo visoko in nizko-temperaturno limito izrazov~(\ref{eq:5},~\ref{eq:6},~\ref{eq:7}).}
+%     \label{fig:limits}
+% \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{limits.png}
+    \caption{Diagram, kjer jasno vidimo visoko in nizko-temperaturno limito izrazov~(\ref{eq:5},~\ref{eq:6},~\ref{eq:7}).}
+    \label{fig:limits}
+\end{figure}
+
+\section{Potrebščine}
+
+\begin{itemize}
+    \item Vzorec germanijevega polprevodnika tipa n z pripravljeno vezavo na kontakte,
+    \item izolirana posoda olja z grelcem, mešalcem in magnetom,
+    \item napajalnik za grelec in mešalec,
+    \item digitalni voltmeter,
+    \item digitalni ampermeter,
+    \item termometer.
+\end{itemize}
+
+\section{Naloga}
+
+\begin{enumerate}
+    \item Izmeri temperaturno odvisnost Hallove napetosti vzorca polprevodnika tipa n na temperaturnem območju med $20\,\mathrm{^\circ C}$ in $80\,\mathrm{^\circ C}$.
+    \item Nariši graf Ohmske upornosti $R$ v odvisnosti od temperature $T$.
+    \item Nariši graf Hallove konstante $R_H$ v odvisnosti od temperature T .
+    \item S pomočjo enačbe (4) nariši graf $\ln(n_p)$ v odvisnosti od $1/kT$ .
+    \item Določi vrsto nosilcev naboja v germanijevem vzorcu na tem temperaturnem območju. Preveri ustreznost enačb~(\ref{eq:5},~\ref{eq:6},~\ref{eq:7}).
+\end{enumerate}
+
+\section{Meritve}
+
+Vzorec napaja baterija z napetostjo
+
+\begin{equation*}
+    U_0 = (0.89 \pm 0.01)\,\mathrm{V}.
+\end{equation*}
+
+Pri različnih temperaturah pomerimo napetost in tok. Oboje izmerimo v obeh orientacijah magnetnega polja, napetosti v prvi in drugi orientaciji označimo $U_1$ in $U_2$. Tok se iz ene v drugo orientacijo znotraj napake ne spremeni. Za obe orientaciji izračunamo Ohmsko upornost vzorca~(glej~sliko~\ref{fig:both}).
+
+\begin{figure}[h]
+    \begin{center}
+    \includegraphics{both.pdf}
+    \end{center}
+    \caption{Ohmske upornosti, izračunane v eni in drugi orientaciji vzorca. Kar nas bo kasneje zanimalo, je razlika napetosti $(U_1 - U_2)/2$, ki predstavlja Hallovo napetost. Ker je temperaturni potek toka znotraj napake identičen za prvo in drugo orientacijo, torej imamo le en tok $I = I_1 = I_2$, je razlika med krivuljama sorazmerna kasneje predstavljeni $R_H$.}
+    \label{fig:both}
+\end{figure}
+
+Hallovo napetost lahko izračunamo iz napetosti v eni in drugi orientaciji kot
+
+\begin{equation*}
+    U_H = \frac{U_1 - U_2}{2},
+\end{equation*}
+
+s čimer se znebimo Ohmskega padca napetosti, ki ni odvisen od orientacije magnetnega polja (oz. vzorca v polju). Iz dobljene napetosti~(slika~\ref{fig:U-by-T}~levo~zgoraj) izračunamo Hallovo konstanto, definirano kot
+
+\begin{equation}
+    R_H = \frac{cU_H}{IB},
+    \label{eq:R_H}
+\end{equation}
+
+pri čemer je $c = 0.95\,\mathrm{mm}$ debelina našega vzorca, $B$ pa gostota magnetnega polja $B = 0.173\,\mathrm{T}$. Temperaturno odvisnost $R_H(T)$ vidimo na sliki~\ref{fig:U-by-T} spodaj.
+
+\begin{figure}
+    \begin{center}
+    \includegraphics{U-by-T.pdf}
+    \end{center}
+    \caption{Potek Hallove napetosti $U_H = (U_1 - U_2)/2$ in toka (zgoraj). Spodaj je izračunana Hallova konstanta, ki je neke vrste \textbf{prečni upor} vzorca. Predznak konstante je odvisen od tega, kakšno konvencijo izberemo. Pomembno pa je pomniti, da se pri spremembi predznaka nosilcev naboja obrne tudi njen predznak.}
+    \label{fig:U-by-T}
+\end{figure}
+
+Poleg načina, na katerega smo Hallovo konstanto definirali v~(\ref{eq:R_H}), iz samih lastnosti sistema sledi, da velja
+
+\begin{equation*}
+    R_H = -\frac{1}{ne_0},
+\end{equation*}
+
+pri čemer je $n$ gostota nosilcev naboja. Tako lahko izračunamo gostoto nosilcev naboja in jo kot v simboličnem diagramu~\ref{fig:limits} predstavimo v odvisnosti od $1/kT$ na sliki~\ref{fig:lnn-by-1-by-kT}.
+
+\begin{figure}
+    \begin{center}
+    \includegraphics{lnn-by-1-by-kT.pdf}
+    \end{center}
+    \caption{Logaritmirane}
+    \label{fig:lnn-by-1-by-kT}
+\end{figure}
+
+V visoko-temperaturni limiti, torej za manjše vrednosti $1/kT$, je logaritem $n$ po $1/kT$ premica z naklonom $-E_g/2$. To sledi direktno iz enačbe~\ref{eq:5}, ki predstavlja visoko-temperaturno limito celotnega sistema. Iz naših meritev izračunamo, da je naklon premice
+
+\begin{equation*}
+    m = (0.44 \pm 0.03)\,\mathrm{ev},
+\end{equation*}
+
+iz česar dobimo energijsko režo
+
+\begin{equation*}
+    E_g = (0.88 \pm 0.07)\,\mathrm{eV}.
+\end{equation*}
+
+Za naklon premice v nizko-temperaturni limiti bi morali vzorec ohladiti znatno pod sobno temperaturo, torej enačbe~\ref{eq:7} z našimi meritvami ne moremo preveriti. Vidimo pa, da se~\ref{fig:lnn-by-1-by-kT} na desni, pri nižjih temperaturah, nekoliko izravna.
+
+
+\end{document}
