@@ -1,0 +1,223 @@
+\documentclass[12pt]{article}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+% \usepackage[T2A]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+% \usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\usepackage{parskip} 
+\usepackage{float}
+
+\title{\textbf{Sunkovna jedrska magnetna resonanca}}
+\author{Samo Krejan}
+\date{december 2025}
+
+\begin{document}
+\maketitle
+
+\section{Uvod}
+
+
+Jedro ima poleg vrtilne količine $\vec{\Gamma}$ tudi magnetni moment $\vec{\mu}$. Vrtilna količina in magnetni moment imata isto smer in sta med sabe povezana preko enačbe:
+
+$$
+\vec{\mu} = \gamma \vec{\Gamma}
+$$
+
+kjer je $\gamma$ girospinsko razmerje in je odvisno od vrsta jedra. Za proton velja $\gamma = 2.675 \cdot 10^8/Ts$. V magnetnem polju $\vec{B_0}$, ki naj kaže v smeri $z$ deluje na jedro navor:
+
+$$
+\vec{N} = \vec{\mu} \cross \vec{B_0} =\gamma \vec{\Gamma}\cross \vec{B_0}
+$$
+
+Sprememba vrtilne količine je sorazmerna sunku navora, kar nam da enačbo:
+
+$$
+\frac{d\vec{\Gamma}}{dt} =\gamma \vec{\Gamma}\cross \vec{B_0}
+$$
+
+Sprememba vrtilne količine je vedno pravokotna nanjo in na manetno polje. Iz tega sledi, da magnetni moment precesira okoli smeri magnetnega polja s frekvenco, ki jo imenujemo Larmorjeva frekvenca:
+
+$$
+\omega_L = \gamma B_0
+$$
+
+Če imamo v polju snov potem se v njej pojavi magnetizacija, ki je magnetni
+moment na enoto volumna. Tudi ta precesira okoli smeri magnetnega polja z
+Larmorjevo frekvenco, kadar ni vzporedna z njim.
+
+Ko za kratek čas vključimo dodatno polje $B_1$, ki je pravokotno na $B_0$ in kroži z Larmorjevo frekvenco, se kot med magnetizacijo
+in statičnim magnetnim poljem poveča. Velikost zamika je odvisna z amplitudo
+in časa trajanja sunkovnega polja. Zanimivi so sunki ki spremenijo kot za $\pi$ ali
+$\pi/2$.
+
+Sunek $\pi/2$ obrne magnetizacijo tako, da v vrtečem se koordinatnem sistemu
+magnetni moment ne čuti nobenega zunanjega polja. Pričakovali bi da bi tam
+ostala, ampak se vrne v termodinamsko ravnovesno vrednost. $z'$ komponenta
+se vrne hitreje zato projekcija magnetizacije na ravnino $x'y'$ pada eksponentno
+z razpadno konstanto $T2$, ki jo imenujemo \textbf{spinsko-spinski relaksacijski čas}.
+Na $T2$ lahko vpliva le interakcija med magnetnimi momenti jeder.
+
+Poleg izgube fazne povezave se zmanjšuje tudi azimut posameznega magnetnega
+momenta. Projekticja magnetizacije na os $z'$ se zato povečuje s karakterističnim
+časom $T1$, ki mu pravimo \textbf{spinsko-mrežni relaksacijski čas}. $T1$ je posledica
+interakcije magnetnig momentov jeder z magnetnimi momenti elektronov v atomih (molekula, kristal) od tod ime.
+
+$$
+M_{z'} = M(1-\exp(-t/T1))
+$$
+
+V nehomogenem magnetnem polju se fazna povezava med magnetnimi momenti
+v $x'y'$ ravnini pokvari. Projektija magnetizacije na ravnino $x'y'$ zato ne pada
+več s časom $T2$, ampak kot neka druga krivulja, katere oblika je odvisna od
+nehomogenosti polja, $ T2$ in oblike vzorca. Ta karakteristični čas imenujemo $T^*
+2$ . Posledica tega je, da $T2$ težko direktno izmerimo iz amplitude signala proste
+precesije, ki je sorazmerna projekciji magnetizacije na $x'y'$, Ocenimo ga lahko
+kot:
+
+$$
+T^*2 \approx \frac{\pi}{2} \frac{1}{\gamma \Delta B_z} \approx \frac{1}{\gamma \Delta B_z}
+$$
+
+Če v času $\tau$ po sunku $\pi/2$ delujemo na sistem s sunkom $\pi$, se v času $2\tau$ po $\pi/2$ sunku magnetni momenti zopet zberejo v smeri osi $-y'$. V merilni tuljavici se zato pojavi signal, ki ga imenujemo spinski odmev. Amplituda spinskega odmeva z večanjem razmaka med sunkoma pada kot $\exp(\frac{2\tau}{T_2})$
+, širina je pa je
+odvisna od tega kako hitro se magnetni momenti spet zberejo nazaj v smeri osi
+$-y'$ in je enaka $2T^*$.
+
+\section{Potrebščine}
+
+
+\begin{itemize}
+    \item NMR spektrometer,
+    \item vzorci vode,
+    \item osciloskop,
+    \item napajalnik,
+    \item vodno hlajenje,
+    \item elektro-magnet.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{screenshot-2026-01-09_00-47-22.png}
+    \caption{Skica (shema) postavitve eksperimenta}
+    \label{mjav}
+\end{figure}
+
+
+\section{Naloga}
+
+\begin{enumerate}
+    \item Za vzorec vode s primešanimi paramagnetnimi ioni poišči signal proste precesije po sunku $\pi/2$ in signal spinskega odmeva po zaporedju sunkov $\pi/2$ in $\pi$. Z opazovanjem širine signala proste precesije in signala spinskega odmeva poišči takšno lego sonde, da bo magnetno polje v področju vzorca čim bolj homogeno. Iz obeh širin izračunaj $T_2^*$ in oceni nehomogenost magnetnega polja v vzorcu.
+    \item Z opazovanjem odvisnosti signala proste precesije med dvema sunkoma $\pi/2$ določi relaksacijski čas $T_1$ za vzorec vode s primešanimi paramagnetnimi ioni in za vzorec vodovodne vode.
+    \item Za vodo s primešanimi paramagnetnimi ioni poišči odvisnost višine signala spinskega odmeva od presledka $\tau$ med sunkoma $\pi/2$ in $\pi$ in določi spinsko-spinski relaksacijski čas $T_2$.
+\end{enumerate}
+
+
+\subsection{Enojni \texorpdfstring{$\pi/2$}{pi/2} sunek}
+
+Prvo izvedemo z vzorcem vode z ioni meritev z enim sunkom $\pi/2$. Pogledamo rep sunka, ta pada s časovno konstanto $T_2^*$~(slika~\ref{fig:T2-star-ions}). Tako s prilagajanjem premice dobimo, da je
+
+\begin{equation*}
+    T_2^* = (0.13 \pm 0.01)\,\mathrm{ms}.
+\end{equation*}
+
+To časovno konstanto lahko ocenimo (poudarek na ocenimo) tudi iz širine spinskega odmeva v kasnejši meritvi. Ta ocena se ujema s tisto, ki smo jo dobili s prilagajanjem premice
+
+\begin{equation*}
+    T_2^*(\text{kot $1\sigma$ spinskega odmeva}) = (0.10 \pm 0.03)\,\mathrm{ms}.
+\end{equation*}
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics{T2-star-ions}
+    \end{center}
+    \caption{Logaritmirana napetost, sorazmerna magnetizaciji $M$ v $xy$ ravnini. To je t. i. signal proste precesije. Naklon prilagojene  premice je $T_2^*$, časovna konstanta razpada magnetizacije v $xy$ ravnini (kasneje izračunamo tudi $T_2$, ki je prav tako časovna konstanta razpada $xy$ magnetizacije, le zaradi procesa, ki ga proces z razpadom $T_2^*$ prekrije).}
+    \label{fig:T2-star-ions}
+\end{figure}
+
+
+\subsection{Dvojni \texorpdfstring{$\pi/2$}{pi/2} sunek}
+
+Razpad magnetizacije v $xy$ ravnini je posledica dveh mehanizmov. Prvi je desinhronizacije precesije jeder zaradi nehomogenosti magnetnega polja, ki narekuje različne Larmourjeve frekvence za jedra na različnih mestih. Karakterizira ga razpadni čas $T_2^*$, ki smo ga pomerili, za katerega v grobi oceni velja
+
+\begin{equation*}
+    T_2^* = \frac{1}{\gamma  \Delta B}.
+\end{equation*}
+
+Iz tega ocenimo, da je velikost nehomogenosti polja v našem magnetu približno
+
+\begin{equation*}
+     \Delta B  = (30 \pm 5)\,\,\mathrm{\mu T},
+\end{equation*}
+
+Drugi efekt pa je obračanje posameznih jedrskih magnetnih momentov nazaj proti osi zunanjega $B$ polja. Obračanje karakterizira čas $T_1$, sicer kot
+
+\begin{equation}
+    M_z = M_0 \left( 1 - e^{-t/T_1} \right).
+    \label{eq:T1}
+\end{equation}
+
+Da ga izmerimo, sistem vzbudimo z dvema sunkoma $\pi/2$. Prvi sunek nastavi $M_z$ vseh jeder na $0$. V času $\tau$ do drugega sunka se del magnetizacije relaksira nazaj v smer zunanjega polja. Ta del magnetizacije obrne drugi sunek nazaj v ravnino $xy$. Preostanek magnetizacije, ki pa se ni relaksiral, temveč je precesiral v ravnini $xy$, pa obrne naprej, še enkrat za $\pi/2$, v celoti za $\pi$. Amplituda precesije, ki jo izmerimo po drugem sunku (za čas $\tau$ po prvem), je torej sorazmerna delu magnetizacije, ki se je relaksirala (raste od $0$ proti $M_0$) v času $\tau$.
+
+Meritve za vodo z ioni in navadno vodo vidimo na sliki~\ref{fig:T1} zgoraj in spodaj. Na meritve prilagodimo funkcijo oblike~(\ref{eq:T1}), pri čemer $\tau$ igra vlogo časa, ki je bil na voljo za relaksacijo. S prilagajanjem izračunamo relaksacijske čase
+
+\begin{align*}
+    T_1(\text{voda z ioni}) = (3 \pm 1)\,\mathrm{ms}, \\
+    T_1(\text{voda}) = (0.61 \pm 0.06)\,\mathrm{s}.
+\end{align*}
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics{T1-ions}
+    \includegraphics{T1-noions}
+    \end{center}
+    \caption{Signal po drugem $\pi/2$ sunku v odvisnosti od časovnega zamika med sunkoma $\tau$. Časovni konstanti $T_1$ za vodo z ioni in navadno vodo določimo s prilagajanjem funkcije oblike~(\ref{eq:T1}).}
+    \label{fig:T1}
+\end{figure}
+
+\subsection{Zaporedna \texorpdfstring{$\pi/2$ in $\pi$}{pi/2 in pi} sunka ter spinski odmev}
+
+Omenili smo mehanizem s časovno konstanto $T_2^*$, po katerem $xy$ zaradi nehomogenosti $\delta B$ razpade še preden se lahko relaksira nazaj v smer zunanjega polja. A tudi če je polje absolutno homogeno, se zaradi efektov nižjega reda precesije magnetnih momentov desinhronizirajo. Ta bolj osnovna desinhronizacija poteka s časovno konstanto $T_2$.
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.55\textwidth]{diagram}
+    \end{center}
+    \caption{Shematski prikaz $\pi$ obratov jedrskega momenta.}
+    \label{fig:diagram}
+\end{figure}
+
+Da izmerimo ta efekt, se moramo znebiti efekta $\delta B$. V ta namen bi lahko takoj po sunku $\pi/2$ obrnili predznak nehomogenosti. To bi v vrtečem sistemu jedra~(glej sliko~\ref{fig:diagram}) rotaciji s frekvenco
+
+\begin{equation*}
+    \omega_i = \gamma\,\delta B,
+\end{equation*}
+
+spremenilo smer in ga vrnilo v začetno orientacijo~(spet slika~\ref{fig:diagram}). A lažje kot z obratom polja enako dosežemo z $\pi$ obratom samega momenta, kot je to prikazano na sliki~\ref{fig:diagram}. Če smo omenjeni sunek $\pi$ priskbeli $\tau$ po prvem sunku $\pi/2$, se bo obrnjen moment v začetno lego (v katero ga je spravil prvi sunek $\pi/2$) vrnil ravno po še enem dodatnem času $\tau$. Signalu, ki ga zaznamo ob tej \textbf{vrnitvi} pravimo spinski odmev.
+
+Podobno kot pri meritvi $T_1$ je tu $\tau$ čas, ki je do drugega sunka na voljo za razpad začetnega $\pi/2$ stanja. Amplituda precesije po drugem sunku pa je sorazmerna $xy$ magnetizaciji, ki se je relaksirala (od $M_0$ do $0$) v času $\tau$.
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics{T2-ions}
+    \end{center}
+    \caption{Logaritmirane meritve signala proste precesije, ki je sorazmeren magnetizaciji v $xy$ ravnini. Naklon premice je $T_2$, časovna konstanta razpada magnetizacije v $xy$ ravnini zaradi statističnih efektov.}
+    \label{fig:T2-ions}
+\end{figure}
+
+Meritve za vodo z ioni vidimo na sliki~\ref{fig:T2-ions}. Ker je relaksacija eksponenten razpad, lahko meritve preprosto logaritmiramo in s prilagojeno premico izračunamo časovno konstanto
+
+\begin{equation*}
+    T_2 = (1.1 \pm 0.1).
+\end{equation*}
+
+
+\end{document}

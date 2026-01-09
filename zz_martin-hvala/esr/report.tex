@@ -1,0 +1,140 @@
+% !TEX program = xelatex
+
+% Base
+\documentclass{article}
+\usepackage[a4paper,margin=1in]{geometry}
+
+% Locale
+\usepackage{polyglossia}
+\setdefaultlanguage[localalph=true]{slovenian}
+\usepackage[autostyle]{csquotes}
+\DeclareQuoteAlias{german}{slovene}
+
+% Bibliography
+\usepackage[backend=biber,style=numeric]{biblatex}
+\addbibresource{/home/martin/literatura.bib}
+
+% Math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+
+% Imported pdf_tex figures
+\usepackage{graphicx,import}
+\usepackage{subfig}
+\usepackage{color}
+
+% Hyperlinks
+\usepackage{hyperref}
+\usepackage[svgnames]{xcolor}
+
+% Pgfplots
+\usepackage{amssymb}
+
+% Styling
+\numberwithin{equation}{section}
+\setlength{\skip\footins}{1.5cm}
+
+% Differential
+\newcommand{\diff}{\mathrm{d}}
+
+% "Defined as" symbol
+\usepackage{mathtools}
+\newcommand{\das}{\vcentcolon=}
+\newcommand{\asd}{=\vcentcolon}
+
+\title{Elektronska spinska resonanca}
+\author{Martin Šifrar}
+
+\begin{document}
+
+\maketitle
+
+\section{Naloga}
+
+\begin{enumerate}
+    \item Z vzorcem DPPH kot merjencem določi g-faktor prostega elektrona in razmerje $B_0/\nu$.
+    \item Izmeri širino absorpcijske črte.
+\end{enumerate}
+
+\section{Meritve}
+
+Z osciloskopom neposredno izmerimo frekvenco regenerirajočega oscilatorja
+
+\begin{equation*}
+    \nu_0 = (69.4 \pm 0.2)\,\mathrm{Hz}.
+\end{equation*}
+
+Naprej uporabimo fazni detektor, ki z množenjem in odstranitvijo visoke nosilne frekvence meri napetost, sorazmerno odvodu absorpcijskega spektra. Po različnih magnetnih gostotah $B_0$ (merimo tok skozi večjo tuljavo) pomerimo odvod spektra. Meritve so prikazane na sliki~\ref{fig:spectra} zgoraj.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics{spectra.pdf}
+    \end{center}
+    \caption{Odvisnost $\Delta U(B_0)$ (zgoraj) in njen integral (spodaj), ki je sorazmeren z absorpcijo valovanja v vzorcu. Povezane črte predstavljajo funkcije, prilagojene na meritve odvoda spektra. Na spodnji sliki je prikazan integral meritev, dodatno premaknjen za konstanto, ki se najbolje ujema z integralom funkcije, prilagojene na meritve v zgornji sliki.}
+    \label{fig:spectra}
+\end{figure}
+
+Zanima nas povprečje in širina absorpcijske črte, ki jo definiramo kar kot razdaljo med ekstremoma odvoda\footnote{Za odvod Gaussovke je to kar $2\sigma$.} Na meritve odvoda prilagodimo odvod Gaussovke z dvema prostima parametroma
+
+\begin{equation*}
+    f(x) \propto (x - \mu) e^{-(x - \mu)^2 / 2\sigma^2},
+\end{equation*}
+
+z dodatnim pogojem enotske $L^2$ norme. Kot vidimo na sliki~\ref{fig:spectra} zgoraj, so repi izmerjenega spektra predebeli za tako obliko, katere repi padajo z $e^{-x^2}$. Zato prilagodimo še odvod funkcije, katere repi padajo z $e^{-x}$. Ena taka funkcija je
+
+\begin{equation*}
+    g(x) \propto \frac{\sinh (x/a)}{\cosh^2 (x/a)},
+\end{equation*}
+
+spet z enotsko $L^2$ normo. Kot vidimo na sliki~\ref{fig:spectra} in v tabeli~\ref{tab:d-I}, ta funkcijska oblika nekoliko bolje razloži naše meritve, kot to vidimo v deležu nerazložene variance.
+
+\begin{table}
+    \centering
+    \begin{tabular}{r|r|rr|rr}
+        $\nu\,[\mathrm{MHz}]$ & $d_\mathrm{minmax}\,[\mathrm{mV}]$ & $d_\mathrm{Gauss}\,[\mathrm{mV}]$ & nerazložena $\mathrm{Var}$ & $d_\mathrm{sinh}\,[\mathrm{mV}]$ & nerazložena $\mathrm{Var}$ \\
+        \hline
+        $79.2 \pm 0.2$ &  9.0 & $11.3 \pm 0.2$ & 2.5\% & $10.0 \pm 0.2$ & 1.1\% \\
+        $85.0 \pm 0.2$ & 12.0 & $13.2 \pm 0.2$ & 1.5\% & $11.7 \pm 0.1$ & 0.8\% \\
+        $90.2 \pm 0.2$ & 12.0 & $13.2 \pm 0.2$ & 1.6\% & $11.8 \pm 0.2$ & 0.8\% \\
+    \end{tabular}
+    \caption{}
+    \label{tab:d-I}
+\end{table}
+
+\begin{table}
+    \centering
+    \begin{tabular}{r|rr}
+        $\nu\,[\mathrm{MHz}]$ & $B_0[\mathrm{mT}]$ & $d[\mathrm{mT}]$ \\
+        \hline
+        $79.2 \pm 0.2$ & $2.9 \pm 0.1$ & $0.107 \pm 0.005$ \\
+        $85.0 \pm 0.2$ & $3.1 \pm 0.1$ & $0.126 \pm 0.005$ \\
+        $90.2 \pm 0.2$ & $3.3 \pm 0.1$ & $0.126 \pm 0.005$ \\
+    \end{tabular}
+    \caption{}
+    \label{tab:d-B}
+\end{table}
+
+Dobljene sredinske vrednosti in širine absorpcijske črte v enotah toka pretvorimo v magnetno gostoto. Pri tem uporabimo diagonalo tuljave, kar nam doprinese precej veliko napako.
+
+Z dobljenimi vrednostmi $B_0$ za tri različne frekvence (tabela~\ref{tab:d-B}), lahko narišemo sliko~\ref{fig:by-freq} in skozi točke prilagodimo premico, katere naklon je $k = B_0/\nu$, njegov inverz pa
+
+\begin{equation*}
+    \frac{\nu}{B_0} = (26 \pm 3)\,\mathrm{GHz/T}.
+\end{equation*}
+
+Inverz naklona $\nu/B_0$ je iz osnovne lastnosti sistema kar $g\eta_B/h$, iz česar izračunamo giromagnetno razmerje
+
+\begin{equation*}
+    g = (1.8 \pm 0.2)\,\mathrm{GHz/T}
+\end{equation*}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics{by-freq.pdf}
+    \end{center}
+    \caption{Odvisnost gostote $B_0$ z največjo absorpcijo v odvisnosti od frekvence.}
+    \label{fig:by-freq}
+\end{figure}
+
+\end{document}

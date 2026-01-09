@@ -1,0 +1,15 @@
+#!/bin/sh
+
+for FILE in **/*.txt
+do
+    echo $FILE
+    cat $FILE \
+        | grep -P '[0-9]+\t' --invert-match \
+        | sed -e 's/.*/# \0/g' \
+        > $(basename $FILE)
+    cat $FILE \
+        | grep -P '[0-9]+\t' \
+        >> $(basename $FILE)
+        #| sed -e 's/\t/,/g' \
+done
+

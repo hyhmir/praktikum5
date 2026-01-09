@@ -1,0 +1,170 @@
+% !TEX program = xelatex
+
+% Base
+\documentclass{article}
+\usepackage[a4paper,margin=1in]{geometry}
+
+% Locale
+\usepackage{polyglossia}
+\setdefaultlanguage[localalph=true]{slovenian}
+\usepackage[autostyle]{csquotes}
+\DeclareQuoteAlias{german}{slovene}
+
+% Bibliography
+\usepackage[backend=biber,style=numeric]{biblatex}
+\addbibresource{/home/martin/literatura.bib}
+
+% Math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+% Imported pdf_tex figures
+\usepackage{graphicx,import}
+\usepackage{subfig}
+\usepackage{color}
+
+% Hyperlinks
+\usepackage{hyperref}
+\usepackage[svgnames]{xcolor}
+
+% Pgfplots
+\usepackage{amssymb}
+
+% Styling
+\numberwithin{equation}{section}
+\setlength{\skip\footins}{1.5cm}
+
+% Differential
+\newcommand{\diff}{\mathrm{d}}
+
+% "Defined as" symbol
+\usepackage{mathtools}
+\newcommand{\das}{\vcentcolon=}
+\newcommand{\asd}{=\vcentcolon}
+
+\title{Kotna korelacija anihilacijskih žarkov $\gamma$}
+\author{Martin Šifrar}
+
+\begin{document}
+
+\maketitle
+
+\section{Naloga}
+
+\begin{enumerate}
+    \item Inicializiraj časovno-digitalni pretvornik na plošči Red Pitaya in opravi kalibracijo.
+    \item Izmeri ločljivost časovno-digitalnega pretvornika.
+    \item Izmeri porazdelitev časovnih intervalov med razpadi radioaktivnega vira.
+    \item Poišči koincidence anihilacijskih žarkov γ in izmeri njihovo kotno korelacijo.
+\end{enumerate}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{diagram.png}
+    \end{center}
+    \caption{Kotna postavitev scintilatorjev.}
+    \label{fig:diagram}
+\end{figure}
+
+\section{Meritve}
+
+\subsection{Ločljivost TDC-jev}
+
+Za oceno ločljivosti oba TDC-ja priklopimo na isti signal (en izmed scintilatorjev). Ko pomerimo porazdelitev medkanalnih časov, bomo nekje blizu 0 videli oster vrh. V idealnem primeru bi bil tak vrh točno na ničli in bi imel širino 0. V dejanskem primeru dobimo nek spekter. Ločljivost lahko ocenimo kot RMS odmik od idealnega sovpadanja. V programu razberemo, da je ta RMS odmik (oz. standardna deviacija)
+
+\begin{equation*}
+    \sigma_t = 2.4\,\mathrm{ns}.
+\end{equation*}
+
+\subsection{Enokanalna meritev}
+
+Na obeh TDC-jih pomerimo spekter časov med razpadi. Spektra vidimo na sliki~\ref{fig:random-coincidende}. Če nanju v logaritemski obliki prilagodimo premico, dobimo naklona, ki predstavljata aktivnosti
+
+\begin{align*}
+    R_1^{\mathrm{(fit)}} &= (1195 +/- 4)\, \mathrm{s^{-1}}, \\
+    R_2^{\mathrm{(fit)}} &= (1408 +/- 5)\, \mathrm{s^{-1}}.
+\end{align*}
+
+Na drug način lahko število vseh sunkov pogledamo celokupno in delimo s časom meritve. Pogledamo tudi odstopanja od vrednosti, ki smo jih dobili iz naklona premice.
+
+\begin{align*}
+    R_1^{\mathrm{(vse)}} &= 1183\, \mathrm{s^{-1}}, \quad \delta = 0.01, \\
+    R_2^{\mathrm{(vse)}} &= 1189\, \mathrm{s^{-1}}, \quad \delta = 0.02.
+\end{align*}
+
+Vrednosti, s katerimi bomo nadaljevali račun, vzamemo kar kot sredinsko vrednost obeh metod, za napako pa vzamemo kar odstopanje $\delta$.
+
+\begin{align*}
+    R_1 &= (1190 \pm 12)\, \mathrm{s^{-1}}, \\
+    R_2 &= (1400 \pm 20)\, \mathrm{s^{-1}}.
+\end{align*}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{signal.jpg}
+        \includegraphics[width=0.5\textwidth]{width.jpg}
+    \end{center}
+    \caption{Signali, sunki iz scintilacijskega detektorja na osciloscopu. Amplituda sunka je sorazmerna z energijo elektrona. Na drugi sliki vidimo signale iz diskriminatorja in oblikovalca signalov. Nastavitve so take, da sta oba signala dolga $~100\,\mathrm{ns}$ in da je njih zamik 0.}
+\end{figure}
+
+\subsection{Medkanalna meritev}
+
+Zdaj pomerimo porazdelitev medkanalnih časov, prvo pri kotu $180^\circ$~(glej sliko~\ref{fig:diagram}), nato pa še pri nekaj drugih.
+
+Napako števila sunkov ocenimo na nekoliko za lase privlečen način. Na spekter prilagodimo Gaussovko in pogledamo RSS (\textit{ang.} root sum of squares) vrednost odmikov med njo in prilagojenim spektrom.
+
+Razvidno je, da so števila sunkov v celotnem vrhu odvisna od kota med scintilatorjema. Daleč največ sunkov je pri kotu $180^\circ$, tj. pri načinu, ko $\gamma$-fotona odletita v nasprotnih smereh. Tak način razpada označuje singletno stanje.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics{correlation.pdf}
+    \end{center}
+    \caption{Spektri medkanalnih časov v koincidenčnem vrhu za različne kote $\theta$~(slika~\ref{fig:diagram}). S črno so narisane Gaussovke, prilagojene na spekter.}
+    \label{fig:correlation}
+\end{figure}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics{correlation-by-angle.pdf}
+    \end{center}
+    \caption{Odvisnost celokupnega števila sunkov v odvisnosti od kota med scintilatorjema. Kot $180^\circ$ označuje razpad singletnega stanja.}
+    \label{fig:by-angle}
+\end{figure}
+
+\subsection{Naključne koincidence}
+
+Če obrnemo \verb|DELAY| vijak na eni izmed enot \verb|GG8000|, se koincidenčni vrh odpelje izven merilnega območja, ki smo ga nastavili. Tedaj je zaznana porazdelitev pretežno le še naključne koincidence. Če sta $R_1$, $R_2$ aktivnosti eksponentne porazdelitve, izmerjene na enem in drugem TDC-ju posebej~(slika~\ref{fig:random-coincidende} zgoraj), velja za aktivnost naključni koincidenc produktna zveza
+
+\begin{equation}
+    R_{12} = R_1 R_2 \tau,
+    \label{eq:product}
+\end{equation}
+
+pri čemer je $\tau$ širina merilnega okna $[-500, 500]$. Pričakujemo torej, da bo
+
+\begin{equation*}
+    R_{12} = (1.66 \pm 0.03)\,\mathrm{s^{-1}}.
+\end{equation*}
+
+A iz medkanalne meritve~(slika~\ref{fig:random-coincidende} spodaj), dobimo aktivnost
+
+\begin{equation*}
+    R_{12} = 1.53\,\mathrm{s^{-1}}.
+\end{equation*}
+
+Da bi lahko določili napako te druge meritve, bi jo morali nekajkrat ponoviti. Ker pa od naše predvidene vprednosti $(1.66 \pm 0.03)\, \mathrm{s^{-1}}$ odstopa več kot predvideno, sklepam, da je velikostnega reda
+
+\begin{equation*}
+    \Delta R_{12} \approx 0.1\,\mathrm{s^{-1}}.
+\end{equation*}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics{random-coincidence.pdf}
+    \end{center}
+    \caption{Da preverimo zvezo~\ref{eq:product}, izmerimo čase med razpadi na prvem in drugem TDC-ju posebej, nato pa medkanalno izmerimo še naključne koincidence med njima.}
+    \label{fig:random-coincidende}
+\end{figure}
+
+\end{document}

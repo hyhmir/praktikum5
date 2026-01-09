@@ -1,0 +1,197 @@
+% !TEX program = xelatex
+
+% Base
+\documentclass{article}
+\usepackage[a4paper,margin=1in]{geometry}
+
+% Locale
+\usepackage{polyglossia}
+\setdefaultlanguage[localalph=true]{slovenian}
+\usepackage[autostyle]{csquotes}
+\DeclareQuoteAlias{german}{slovene}
+
+% Bibliography
+\usepackage[backend=biber,style=numeric]{biblatex}
+\addbibresource{/home/martin/literatura.bib}
+
+% Math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{physics}
+
+% Imported pdf_tex figures
+\usepackage{graphicx,import}
+\usepackage{subfig}
+\usepackage{color}
+
+% Hyperlinks
+\usepackage{hyperref}
+\usepackage[svgnames]{xcolor}
+
+% Pgfplots
+\usepackage{amssymb}
+
+% Styling
+\numberwithin{equation}{section}
+\setlength{\skip\footins}{1.5cm}
+
+% Differential
+\newcommand{\diff}{\mathrm{d}}
+
+% "Defined as" symbol
+\usepackage{mathtools}
+\newcommand{\das}{\vcentcolon=}
+\newcommand{\asd}{=\vcentcolon}
+
+\setcounter{page}{0}
+\setcounter{section}{8}
+\setcounter{subsection}{0}
+
+\title{Spektrometrija žarkov $\gamma$ s scintilacijskim spektrometrom}
+\author{Martin Šifrar}
+
+\begin{document}
+
+\maketitle
+
+\subsection{Naloga}
+
+\begin{enumerate}
+    \item Prilagodite valovod na generator mikrovalov.
+    \item Izmerite frekvenco valovanja s pomočjo v valovod vgrajenega resonatorja.
+    \item Posnemite rodove klistronovega delovanja v odvisnosti od odbojne napetosti.
+    \item Izmerite moči, ki jih porablja termistor v vrhovih najmočnejših rodov.
+    \item Z osciloskopom posnemite krivulji ubranosti za valovod, ki je zaključen z bremenom, in za kratko sklenjeni valovod.
+\end{enumerate}
+
+\subsection{Meritve}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{setting-1.jpg}
+    \end{center}
+    \caption{Nastavitev ubiralke, pri kateri je signal maksimalen. To nastavitev, ki jo obdržimo skozi vse meritve.}
+    \label{fig:setting}
+\end{figure}
+
+Na valovod pritrdimo trobljo in nastavimo ubiralko in odbojno napetost tako, da je signal maksimalen. To nastavitev obdržimo skozi vse kasnejše meritve.
+Frekvenco valovanja določimo tako, da z vrtenjem mikrometerskega vijaka spreminjamo dimenzijo resonančne votline in opazujemo signal na merilni sondi. Ko signal pade (pravzaprav opazimo dva minimuma, ki sta zelo blizu skupaj), je vijak v položaju
+
+\begin{table}
+    \centering
+    \begin{tabular}{c|r}
+        lega & $\nu\,[\mathrm{GHz}]$ \\
+        \hline
+        100 & 10.0 \\
+        300 & 9.0 \\
+        500 & 8.0
+    \end{tabular}
+    \caption{Umeritvena tabela mikrometerskega vijaka resonančne votline.}
+    \label{tab:calib}
+\end{table}
+
+\begin{equation*}
+    x_\mathrm{vijak} = 410 \pm 1,
+\end{equation*}
+
+iz česar preko umeritvene tabele~\ref{tab:calib} izračunamo frekvenco
+
+\begin{equation*}
+    \nu = (11.05 \pm 0.01)\,\mathrm{GHz}.
+\end{equation*}
+
+Zdaj prečešemo celoten obseg odbojne napetosti in poiščemo vse rede delovanja klistrona. Nekateri izmed teh so šibkejši in jih težje opazimo. Pri teh odbojnih napetostih nato z bolometrom izmerimo še moč $P_m$, tj. moč, ki se porablja na termistorju. Meritve so predstavljene v prvih dveh stolpci tabele~\ref{tab:s-meas}. Ko kasneje izračunamo ubranost $s$, bomo pravo moč $P$~(zadnji stolpec tabele~\ref{tab:s-meas}) izračunali kot
+
+\begin{equation}
+    P = \frac{P_m}{1 - |r_R|^2},
+    \label{eq:P}
+\end{equation}
+
+pri čemer je rekflekcijski koeficient $r_R$ definiran kot
+
+\begin{equation*}
+    |r_R|^2 = \left( \frac{1-s}{1+s} \right)^2.
+\end{equation*}
+
+Z valovodom, zaključenim z bolometrom, pomerimo umeritveno krivuljo. To naredimo tako, da počasi premaknemo voziček s sondo, zraven pa na osciloskopu beležimo položaj vozička in izmerjeno vrednost na sondi (jakost). Enako meritev ponovimo še z valovodom, ki je zaključem s steno (je kratko staknjen). Dobljena poteka sta vidna na sliki~\ref{fig:traces}. Da iz meritev potenciometra lahko izračunamo razdaljo, izmerimo še razliko med ekstremoma položaja vozička
+
+\begin{equation*}
+    l = (4.6 \pm 0.2)\,\mathrm{cm}.
+\end{equation*}
+
+\begin{figure}
+    \begin{center}
+    \includegraphics{traces.pdf}
+    \end{center}
+    \caption{Poteki jakosti na sondi in potenciometra (položaja sonde) za valovod, zaključen z bolometrom (zgoraj) in valovod, zaključen z steno (spodaj).}
+    \label{fig:traces}
+\end{figure}
+
+\begin{figure}
+    \begin{center}
+    \includegraphics{s.pdf}
+    \end{center}
+    \caption{Krivulji ubranosti za valovod, zaključen z bolometrom (zelena) in valovod, zaključen z steno (oranžna). S črno črtkano črto so narisane parabole, ki jih prilagodimo posameznim vrhovom, da natančneje odčitamo njihov položaj.}
+    \label{fig:s}
+\end{figure}
+
+Prvo iz korena razmerja amplitud v krivulji ubranosti (slika~\ref{fig:s}) izračunamo parameter ubranosti $s$, ki ima vrednost
+
+\begin{equation*}
+    s = 0.494 \pm 0.001.
+\end{equation*}
+
+Zdaj z odčitano razdaljamo $x_\mathrm{min}$ in valovno dolžino $\lambda$ izračunamo produkt
+
+\begin{equation*}
+    \beta x_\mathrm{min} = 2\pi \frac{x_\mathrm{min}'}{\lambda'},
+\end{equation*}
+
+katerega vrednost je
+
+\begin{equation*}
+    \beta x_\mathrm{min} = 1.10 \pm 0.08.
+\end{equation*}
+
+Končno izračunamo še relativno reaktanco bremena kot
+
+\begin{equation*}
+    \frac{\eta_R}{Z_0} = \frac{ (s^2 - 1) \tan \beta x_\mathrm{min} }{ 1 + s^2 \tan^2 \beta x_\mathrm{min} }.
+\end{equation*}
+
+Dobimo vrednost
+
+\begin{equation*}
+    \frac{\eta_R}{Z_0} = -0.76 \pm 0.02,
+\end{equation*}
+
+in njegovo relativno rezistanco kot $\frac{\xi_R}{Z_0} = \left( 1 - \frac{\eta_R}{Z_0} \tan \beta  x_\mathrm{min} \right) s$. Dobimo
+
+\begin{equation*}
+    \frac{\xi_R}{Z_0} = 1.23 \pm 0.04. 
+\end{equation*}
+
+Absolutna vrednost relativne (proti $Z_0$) impedance bremena je torej
+
+\begin{equation*}
+    \left| \frac{Z_R}{Z_0} \right| = 1.45 \pm 0.04.
+\end{equation*}
+
+\begin{table}
+    \centering
+    \begin{tabular}{c|r|r}
+        $U_o\,[\mathrm{V}]$ & $P_m\,[\mathrm{mW}]$ & $P\,[\mathrm{mW}]$ \\
+        \hline
+        -30.2 & 0.10 & 0.11 \\
+        -55.7 & 0.22 & 0.25 \\
+        -92.8 & 0.38 & 0.43 \\
+        \textbf{-148.3} & \textbf{0.56} & \textbf{0.63} \\
+        -230.1 & 0.52 & 0.59 \\
+        -359.8 & 0.38 & 0.43
+    \end{tabular}
+    \caption{Odbojne napetosti v vseh najdenih redovih delovanja klistrona in moč na termistorju $P_m$. V zadnjem stolpcu je predstavljena tudi prava moč valovanja $P$, ki jo izračunamo s pomočjo ubranosti $s$ preko enačbe~\ref{eq:P}.}
+    \label{tab:s-meas}
+\end{table}
+
+\end{document}

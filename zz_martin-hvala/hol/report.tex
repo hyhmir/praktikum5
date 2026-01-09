@@ -1,0 +1,156 @@
+% !TEX program = xelatex
+
+% Base
+\documentclass{article}
+\usepackage[a4paper,margin=1in]{geometry}
+
+% Locale
+\usepackage{polyglossia}
+\setdefaultlanguage[localalph=true]{slovenian}
+\usepackage[autostyle]{csquotes}
+\DeclareQuoteAlias{german}{slovene}
+
+% Bibliography
+\usepackage[backend=biber,style=numeric]{biblatex}
+\addbibresource{/home/martin/literatura.bib}
+
+% Math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+
+% Imported pdf_tex figures
+\usepackage{graphicx,import}
+\usepackage{subfig}
+\usepackage{color}
+
+% Hyperlinks
+\usepackage{hyperref}
+\usepackage[svgnames]{xcolor}
+
+% Pgfplots
+\usepackage{amssymb}
+
+% Styling
+\numberwithin{equation}{section}
+\setlength{\skip\footins}{1.5cm}
+
+% Differential
+\newcommand{\diff}{\mathrm{d}}
+
+% "Defined as" symbol
+\usepackage{mathtools}
+\newcommand{\das}{\vcentcolon=}
+\newcommand{\asd}{=\vcentcolon}
+
+\title{Holografija}
+\date{20. januar 2022}
+
+\author{Martin Šifrar}
+
+\begin{document}
+
+\maketitle
+
+\section{Uvod}
+
+Holografija za razliko od navadne fotografije omogoča tridimenzionalno upodobitev predmeta. Poleg podatka o absolutni poljski jakosti, ki ga zabeleži fotografski film pri običajnem fotografskem postopku, zabeležimo pri holografiji na film tudi podatek o fazi valovanja. To dosežemo tako, da posnamemo interferenčno sliko med referenčnim žarkom in žarkom, ki se odbije od predmeta.
+
+Na sliki~\ref{fig:diagram} vidimo postavitev, ki zagotovi potrebne pogoje. Delilnik žarka žarek razcepi.
+
+Prvi del žarka se odbije od 1. zrcala in skozi 1. lečo osvetli predmet, ki žarek razprši po prostoru. Zaželjeno je, da je čim večji del razpršenega žarka v smeri fotografske plošče, saj se v njem skriva informacija o predmetu ki ga slikamo -- zato se ta žarek imenuje predmetni žarek $E_p$.
+
+Drugi del žarka pošlje delilnik skozi 2. lečo proti 2. zrcalu. To je t. i. referenčni žarek $E_r$, ki ga 2. zrcalo končno usmeri mimo predmeta na fotografsko ploščo.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{diagram.png}
+    \end{center}
+    \caption{Postavitev za snemanje holograma predmeta.}
+    \label{fig:diagram}
+\end{figure}
+
+\subsection{Hologram predmeta}
+
+Žarka lahko v splošnem zapišemo kot
+
+\begin{align*}
+    E_p(x, y) = E_{p0}(x, y) e^{-i\phi(x,y)} e^{i\omega t}, \\
+    E_r(x, y) = E_{r0}(x, y) e^{-i\psi(x,y)} e^{i\omega t}.
+\end{align*}
+
+A če v pri postavitvi zagotovimo, da referenčni žarek na fotografsko ploščo pada kot ravni val in točno pod pravim kotom, njegova amplituda in faza ni odvisna od položaja $(x, y)$ na plošči. Torej se oblika referenčnega vala poenostavi v
+
+\begin{equation*}
+    E_r(x, y) = E_{r0} e^{i\omega t},
+\end{equation*}
+
+pri čemer je $E_{r0}$ preprosto realna konstanta. Rezultirajoča poljska jakost na plošči je preprosto vsota predmetnega in referenčnega vala $E_p + E_r$, njen kvadrat $I$ pa posledično
+
+\begin{equation*}
+    I(x, y) = |E_p|^2 + |E_r|^2 + E_r(E_p + E_p^*).
+\end{equation*}
+
+Če je transmisivnost emulzije $T$ od ekspozicije $W = tI$ odvisna kot $T \propto W^\gamma$, lahko zapišemo koren transmisivnosti (tako gledamo amplitudo, ne njen koren) kot
+
+\begin{equation*}
+    T_\mathrm{amp} = \sqrt{T} = A + BE_r(E_p + E_p^*).
+\end{equation*}
+
+Če po razvoju razvito fotografsko ploščo osvetlimo ravno z referenčnim žarkom, dobimo na strani plošče, v katero gledamo, jakost polja
+
+\begin{equation*}
+    E_\mathrm{hol} = TE_r = AE_r + B|E_r|^2 (E_p + E_t^*).
+\end{equation*}
+
+Prvi člen predstavlja delno prepuščeni referenčni žarek. Drugi člen opisuje divergenten žarek, ki je tak, kot da bi izviral iz predmeta in kot tak ustvarja v očesu virtualno sliko predmeta na originalnem mestu, kjer smo ga slikali.
+
+Tretji člen opisuje žarek, ki je kot originalni predmetni žarek $E_p$, le da se širi nazaj v času. Kot tak opisuje konvergenten žarek, ki ustvarja realno sliko na mestu zrcalno (preko ravnine fotografske plošče) nasproti originalnemu predmetu.
+
+\subsection{Hologram ravnih valov}
+
+Posebno preprost primer holograma je primer, v katerem je tudi predmetni žarek preprost ravni val. Če je referenčni žarek vzporeden fotografski plošči, dobimo v enem izmed koordinatnih sistemov, kjer je fotografska plošča v ravnini $z = 0$, posebej preprosta valovna vektorja $\mathbf{k}_p(k\sin\alpha, 0, k\cos\alpha)$ in $\mathbf{k}_r = (0, 0, k)$. Intenziteta referenčnega vzorca na plošči je tedaj
+
+\begin{equation*}
+    I(x) = C(1 + \cos(kx\sin\alpha)),
+\end{equation*}
+
+in hologram je efektivno sinusna uklonska mrežica s periodo
+
+\begin{equation}
+    d = \frac{2\pi}{k\sin\alpha}.
+    \label{eq:d}
+\end{equation}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{diagram-2}
+    \end{center}
+    \caption{Postavitev za snemanje interferenčnega vzorca dveh ravnih valov.}
+    \label{fig:diagram-2}
+\end{figure}
+
+\section{Naloga}
+
+\begin{enumerate}
+    \item Sestavi postavitev za snemanje holograma in ga posnemi.
+    \item Posnemi interferogram dveh ravnih valov.
+\end{enumerate}
+
+\section{Meritve}
+
+Na optični mizi postavimo pot za referenčni in za predmetni žarek, kot prikazano na sliki~\ref{fig:diagram}. Pazimo, da sta optični poti čim bolj podobni, saj tako zagotovimo, da svetloba ostane koherentna\footnote{To sicer pri laserju zadostne kvalitete ne bi smel biti problem.}. Pazimo tudi, da referenčni žarek na ploščo pada približno pod pravim kotom, predmetni žarek pa je z njim karseda vzporeden (seveda smo omejeni z praktičnostjo postavitve). Predmet postavimo v predmetni žarek in ga prilagodimo tako, da se osvetljeni del obrača proti fotografski plošči. Pripravimo kemikalije in zapremo sobo tako, da je laser edini vir svetlobe. Ko sliko razvijemo, lahko ob osvetlitvi z originalnim referenčnim žarkom vidimo virtualno sliko predmeta, katerega sliko smo posneli.
+
+Za hologram dveh ravnih valov potrebujemo postavitev na optični mizi spremeniti, saj zdaj nimamo predmeta, ki deluje kot tretje zrcalo in odbije svetlobo v fotografsko ploščo. Namesto tega morata biti oba žarka usmerjena direktno v ploščo, kot na sliki~\ref{fig:diagram-2}. Ko sliko razvijemo, lahko z referenčnim snopom posvetimo skozi ploščo in na steni pod kotom $\alpha$ od optične osi vidimo uklon prvega reda. Izmerimo\footnote{Razvoj interferenčnega vzorca ravnih valov mi ni uspel, zato je izmerjen kot interferenčnega vzorca, ki ga je ustvaril nekdo drug.}
+
+\begin{equation*}
+    \sin\alpha = \frac{x}{a} = (0.25 \pm 0.01).
+\end{equation*}
+
+Če vzamemo (iskreno v to nisem popolnoma prepričan), da je naš laser $\mathrm{He}-\mathrm{Ne}$ laser z valovno dolžino $632.8\,\mathrm{nm}$, lahko po izrazu~(\ref{eq:d}) izračunamo, da je perioda uklonske mrežice
+
+\begin{equation*}
+    d = (2.5 \pm 0.1)\,\mathrm{\mu m}.
+\end{equation*}
+
+\end{document}
