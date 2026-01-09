@@ -1,11 +1,7 @@
 import matplotlib as mpl
 from matplotlib import figure, animation
-mpl.rcParams.update({
-    'font.family': 'serif',
-    'text.usetex': True,
-    'axes.labelsize': 'large',
-    'figure.dpi': 100,
-})
+import scienceplots
+mpl.pyplot.style.use('science')
 from matplotlib.ticker import AutoMinorLocator
 
 import numpy as np
@@ -17,7 +13,7 @@ import re
 from measio import read_measdict
 
 
-measdict = read_measdict('measurements/*.csv')
+measdict = read_measdict('zz_martin-hvala/diff/measurements/*.csv')
 
 a, Δa = 48.8e-2, 1e-2
 b, Δb = 100.1e-2, 1e-2
@@ -138,5 +134,5 @@ def fig_linearized(savefig=None):
     fig.subplots_adjust(left=0.2, right=0.92, bottom=0.18)
     fig.savefig(savefig, dpi=300)
 
-fig_by_t(savefig='by-t.pdf')
-fig_linearized(savefig='linearized.pdf')
+fig_by_t(savefig='10_DIF/porocilo/by-t.pdf')
+fig_linearized(savefig='10_DIF/porocilo/linearized.pdf')
