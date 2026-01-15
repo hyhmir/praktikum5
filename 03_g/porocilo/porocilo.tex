@@ -40,4 +40,75 @@ Comptonovo sipanje je neelastično sipanje fotona na skoraj prostem elektronu. P
 Kadar ima žarek $\gamma$ dovolj energije ($E_\gamma \geq 1.02\ MeV$), se lahko v bližini jedra spremeni v par pozitron-elektron s skupno kinetično energijo $E_\gamma - 2m_0c^2$, odvečno gibalno količino pa prevzame jedro. Nastala delca se gibljeta pretežno v smeri naprej. V scintilatorju se zaustavita in mu predata svojo kinetično energijo. Ob upočasnitvi se poziton anihilira z enim od elektronov, ki jih sreča na svoji poti. Nastaneta dva kolinearna žarka $\gamma$. Možno je da pobegneta oba, samo en ali pa da oba ostaneta v scintilatorju. Tako dobimo vrh dvojnega pobega, vrh pobega in vrh polne absorbcije
 
 
+\section{Potrebščine}
+
+\begin{itemize}
+    \item Scintilatorski detektor,
+    \item izvor visoke napetosti za napajanje fotopomnoževalke,
+    \item ojačevalnik z enokanalnim analizatorjem $Ortec 590A$,
+    \item večkanalni analizator $MCA\ 8000A$,
+    \item radioaktivni izvori $^{22}Na$, $^{137}Cs$ in $^{60}Co$
+\end{itemize}
+
+\section{Naloga}
+
+\begin{itemize}
+    \item S pomočjo dveh črt $\gamma$ iz $^{22}Na$ z energijo $E1 = 0.51\ MeV$ in $E2 = 1.277\ MeV$ umeri energijsko skalo scintilacijskega spektrometra in izmeri energijo črt iz $^{137}Cs$ in $^{60}Co$. Pri analizi odštej spekter ozadja
+    \item Izmeri energijsko ločljivost za vrh polne absorbcije tako, da podatkom v okolici prilagajaš gaussovo funkcijo.
+    \item Izračunaj izkoristek kristala za vrh polne absorbcije (določi z izvorom $^{137}Cs$)
+    \item Oceni energijo vrha povratnega sipanja
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{shema.png}
+    \caption{Shema našega eksperimenta. Pod scintilatorjem postavimo radioaktivni izvor.}
+\end{figure}
+
+\section{Meritve}
+
+Najprej sem si z osciloskopom ogledal ojačane signale iz scintilatorskega detektorja. Videl sem sliko \ref{osci}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{signal.jpg}
+    \caption{Signali, sunki iz scintilatorskega detektorja na osciloskopu. Amplituda sunka je sorazmerna z energijo elektrona.}
+    \label{osci}
+\end{figure}
+
+Amplituda sunka je sorazmerna z energijo elektrona. Jasno vidimo, da je ena izmed energij mnogo bolj zastopana kot ostale. V nadaljnjih meritvah to klasificiramo kot spekter.
+
+Spekter nato pomerimo še z večkanalnim analizatorjem, ki sledi vsem energijskim (napetostnim) intervalom hkrati (slike~\ref{fig:na22},~\ref{fig:spectra}). Pomerimo tudi spekter ozadja, ki ga kasneje odštejemo od izmerjenih spektrov. Za lažje primerjanje gledamo gostoto aktivnosti, izračunamo jo tako, da število sunkov delimo s časom (\textit{livetime}) in z dolžino energijskega intervala. Na posamezne fotovrhove prilagodimo Gaussovke oblike
+
+\begin{equation*}
+    f(x) = \frac{A_0}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2} \frac{x - \mu}{\sigma^2}},
+\end{equation*}
+
+katerega površina predstavlja zaznano aktivnost tega fotovrha. Vse tako izračunane aktivnosti so predstavljene na slikah~\ref{fig:na22},~\ref{fig:spectra}. Za vzorec $^{137}\mathrm{Cs}$ poznamo začetno aktivnost $9250\,\mathrm{Bq}$, izmerjeno $9 \pm 0.25$ mesecev nazaj. Če primerjamo polovico\footnote{Pokrijemo prostorski kot $2\pi$.} te aktivnosti s površino fotovrha v~\ref{fig:spectra}, izračunamo, da je učinkovitost našega detektorja
+
+\begin{equation*}
+\eta = (5.2 \pm 0.1)\,\%.
+\end{equation*}
+
+Za vse energije gamma fotonov izračunamo še predvidene položaje Comptonskega \textit{backscattering} vrha in jih prikažemo na~\ref{fig:na22},~\ref{fig:spectra}.
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics{na22-lost-spectrum.pdf}
+    \end{center}
+    \caption{Spekter zaznanih elektronov za $^{22}\mathrm{Na}$, izražen kot gostota aktivnosti.}
+    \label{fig:na22}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics{co60-lost-spectrum.pdf}
+    \includegraphics{cs137-lost-spectrum.pdf}
+    \end{center}
+    \caption{Spekter zaznanih elektronov za $^{60}\mathrm{Co}$ in $^{137}\mathrm{Cs}$, izražen kot gostota aktivnosti.}
+    \label{fig:spectra}
+\end{figure}
+
+Povratno sevanje ocenimo kot $161\pm 9\ keV$.
+
 \end{document}
